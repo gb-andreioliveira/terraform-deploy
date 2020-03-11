@@ -243,7 +243,7 @@ variable "user_data" {
   description = "Data to use when starting the app"
   default = <<EOT
     #!/bin/bash
-    aws s3 cp s3://oclim-terraform-s3-bucket/app.zip ~/app.zip
+    aws s3 cp s3://oclim-terraform-s3-bucket/app_oclim.zip ~/app.zip
     unzip ~/app.zip -d ~/app
     mkdir ~/app/test-reports/
     python ~/app/test.py
