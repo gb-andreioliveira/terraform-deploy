@@ -48,7 +48,7 @@ data "aws_security_group" "external_security_group" {
 }
 
 module "app_stack" {
-	source = "modules/app_stack"
+	source = "./modules/app_stack"
 	publicsubnet1_id = data.aws_subnet.subnet1.id
 	publicsubnet2_id = data.aws_subnet.subnet2.id
 	internal_security_group_id = data.aws_security_group.internal_security_group.id
