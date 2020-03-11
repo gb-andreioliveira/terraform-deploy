@@ -5,3 +5,8 @@ output "lb_dns" {
 output "asg_arn" {
   value = var.vpcname
 }
+
+output "asg_instance_name" {
+  value = var.asg_value
+}
+
