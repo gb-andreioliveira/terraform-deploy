@@ -7,7 +7,7 @@ provider "aws" {
 terraform {
 	backend "s3" {
 		region  = "us-east-1"
-		bucket  = var.bucketName
+		bucket  = "oclim-terraform-s3-bucket"
 		key     = "states/app_stack.tfstate"
 	}
 }
@@ -15,35 +15,35 @@ terraform {
 data "aws_vpc" "main_vpc" {
 	filter {
 		name   = "tag:Name"
-		values = [var.vpcName]
+		values = ["oclim-terraform"]
 	}
 }
 
 data "aws_subnet" "subnet1" {
 	filter {
 		name   = "tag:Name"
-		values = [var.subnet1]
+		values = ["oclim-terraform-publicsubnet-1"]
 	}
 }
 
 data "aws_subnet" "subnet2" {
 	filter {
 		name   = "tag:Name"
-		values = [var.subnet2]
+		values = ["oclim-terraform-publicsubnet-2"]
 	}
 }
 
 data "aws_security_group" "internal_security_group" {
 	filter {
 		name   = "tag:Name"
-		values = [var.internal_security_group]
+		values = ["oclim-terraform-InternalSG"]
 	}
 }
 
 data "aws_security_group" "external_security_group" {
 	filter {
 		name   = "tag:Name"
-		values = [var.external_security_group]
+		values = ["oclim-terraform-externalSG"]
 	}
 }
 
